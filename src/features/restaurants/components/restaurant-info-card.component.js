@@ -23,7 +23,13 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
       />
       <Card.Content>
         <Title style={styles.title}>{name}</Title>
-        <Paragraph>{address}</Paragraph>
+        <Paragraph>Rating: {rating}</Paragraph>
+        <Paragraph>Address: {address}</Paragraph>
+        {isClosedTemporarily ? (
+          <Title>Closed Temporarily</Title>
+        ) : (
+          <Paragraph>Visit us {icon}</Paragraph>
+        )}
       </Card.Content>
       <Card.Cover key={name} style={styles.cover} source={{ uri: photos[0] }} />
       <Card.Actions style={styles.action}>
