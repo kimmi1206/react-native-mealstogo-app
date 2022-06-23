@@ -1,7 +1,8 @@
 import React, { useState, useCallback } from 'react';
-import { StyleSheet, View, SafeAreaView, StatusBar } from 'react-native';
+import { View, SafeAreaView, StatusBar } from 'react-native';
 import { Searchbar } from 'react-native-paper';
 import { RestaurantInfoCard } from '../components/restaurant-info-card.component';
+import styled from 'styled-components/native';
 
 const DUMMY_DATA = [
   {
@@ -13,51 +14,65 @@ const DUMMY_DATA = [
     address: '100 some random street',
     isOpenNow: true,
     rating: 4,
-    isClosedTemporarily: false,
+    isClosedTemporarily: true,
   },
 ];
 
 // SafeAreaView is Only for iOS, Statusbar spacing
+const SafeAreaContainer = styled(SafeAreaView)`
+  flex: 1;
+  ${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px`};
+  align-items: flex-start;
+  justify-content: flex-start;
+  background-color: white;
+`;
+
+const SearchContainer = styled(View)`
+  padding: 10px;
+  width: 100%;
+`;
+
+const SearchBar = styled(Searchbar)`
+  font-weight: bolder;
+`;
+
+const RestaurantListContainer = styled(View)`
+  padding: 10px;
+  width: 100%;
+`;
+
 export const RestaurantsScreen = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
   const onChangeSearch = useCallback((query) => setSearchQuery(query), []);
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.searchContainer}>
+    <SafeAreaContainer>
+      <SearchContainer>
         {/* <Text>Search:</Text> */}
-        <Searchbar
-          style={styles.searchBox}
+        <SearchBar
           placeholder="Search"
           onChangeText={onChangeSearch}
           value={searchQuery}
         />
-      </View>
-      <View style={styles.listContainer}>
+      </SearchContainer>
+      <RestaurantListContainer>
         <RestaurantInfoCard restaurant={DUMMY_DATA[0]} />
-      </View>
-    </SafeAreaView>
+      </RestaurantListContainer>
+    </SafeAreaContainer>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: StatusBar.currentHeight, // statusbar spacing on android
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
-  },
-  searchContainer: {
-    padding: 10,
-    width: '100%',
-  },
-  searchBox: {
-    fontWeight: 'normal',
-  },
-  listContainer: {
-    padding: 10,
-    width: '100%',
-    // backgroundColor: '#fff',
-  },
-});
+// StyleSheet.create({
+//   searchContainer: {
+//     padding: 10,
+//     width: '100%',
+//   },
+//   searchBox: {
+//     fontWeight: 'normal',
+//   },
+//   listContainer: {
+//     padding: 10,
+//     width: '100%',
+//   },
+// });

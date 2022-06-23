@@ -1,8 +1,36 @@
 import React from 'react';
-import { Text, StyleSheet } from 'react-native';
+import { Text } from 'react-native';
 import { Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
+import styled from 'styled-components/native';
 
 const LeftContent = (props) => <Avatar.Icon {...props} icon="folder" />;
+
+const RestaurantCard = styled(Card)`
+  background-color: snow;
+`;
+
+const RestaurantCardCover = styled(Card.Cover)`
+  padding: 20px;
+  background-color: ghostwhite;
+`;
+
+const RestaurantCardActions = styled(Card.Actions)`
+  justify-content: center;
+`;
+
+const RestaurantCardTitle = styled(Card.Title)`
+  padding: 16px;
+`;
+
+const StyledParagraph = styled(Paragraph)`
+  color: darkblue;
+  font-weight: bold;
+`;
+
+const StyledTitle = styled(Title)`
+  color: red;
+  font-weight: bolder;
+`;
 
 export const RestaurantInfoCard = ({ restaurant = {} }) => {
   const {
@@ -14,35 +42,35 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
     rating,
     isClosedTemporarily,
   } = restaurant;
+
   return (
-    <Card elevation={5} style={styles.card}>
-      <Card.Title
+    <RestaurantCard elevation={5}>
+      <RestaurantCardTitle
         title={name}
         subtitle={isOpenNow ? <Text>Is Open</Text> : <Text>Is Closed</Text>}
         left={LeftContent}
       />
       <Card.Content>
-        <Title style={styles.title}>{name}</Title>
-        <Paragraph>Rating: {rating}</Paragraph>
-        <Paragraph>Address: {address}</Paragraph>
+        <StyledParagraph>Rating: {rating}</StyledParagraph>
+        <StyledParagraph>Address: {address}</StyledParagraph>
         {isClosedTemporarily ? (
-          <Title>Closed Temporarily</Title>
+          <StyledTitle>Closed Temporarily</StyledTitle>
         ) : (
-          <Paragraph>Visit us {icon}</Paragraph>
+          <StyledParagraph>Visit us {icon}</StyledParagraph>
         )}
       </Card.Content>
-      <Card.Cover key={name} style={styles.cover} source={{ uri: photos[0] }} />
-      <Card.Actions style={styles.action}>
+      <RestaurantCardCover key={name} source={{ uri: photos[0] }} />
+      <RestaurantCardActions>
         <Button>Cancel</Button>
         <Button>Reserve</Button>
-      </Card.Actions>
-    </Card>
+      </RestaurantCardActions>
+    </RestaurantCard>
   );
 };
 
-const styles = StyleSheet.create({
-  card: { backgroundColor: 'white' },
-  cover: { padding: 20, backgroundColor: 'white' },
-  action: { justifyContent: 'center' },
-  title: { padding: 16 },
-});
+// const styles = StyleSheet.create({
+//   card: { backgroundColor: 'white' },
+//   cover: { padding: 20, backgroundColor: 'white' },
+//   action: { justifyContent: 'center' },
+//   title: { padding: 16 },
+// });
