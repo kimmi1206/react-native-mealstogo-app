@@ -7,7 +7,7 @@ import styled from 'styled-components/native';
 const DUMMY_DATA = [
   {
     name: 'Some Restaurant',
-    icon: '',
+    icon: 'restaurant',
     photos: [
       'https://www.foodiesfeed.com/wp-content/uploads/2019/06/top-view-for-box-of-2-burgers-home-made-600x899.jpg',
     ],
@@ -24,20 +24,20 @@ const SafeAreaContainer = styled(SafeAreaView)`
   ${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px`};
   align-items: flex-start;
   justify-content: flex-start;
-  background-color: white;
+  background-color: ${(props) => props.theme.colors.bg.primary};
 `;
 
 const SearchContainer = styled(View)`
-  padding: 10px;
+  padding: ${(props) => props.theme.space[3]};
   width: 100%;
 `;
 
 const SearchBar = styled(Searchbar)`
-  font-weight: bolder;
+  font-weight: ${(props) => props.theme.fontWeights.bold};
 `;
 
 const RestaurantListContainer = styled(View)`
-  padding: 10px;
+  padding: ${(props) => props.theme.space[2]};
   width: 100%;
 `;
 
@@ -49,7 +49,6 @@ export const RestaurantsScreen = () => {
   return (
     <SafeAreaContainer>
       <SearchContainer>
-        {/* <Text>Search:</Text> */}
         <SearchBar
           placeholder="Search"
           onChangeText={onChangeSearch}

@@ -1,3 +1,12 @@
 {
-  "cSpell.ignoreWords": ["backgroundcolor", "ghostwhite", "mealstogo"]
+  "cSpell.ignoreWords": [
+    "Ionicons",
+    "backgroundcolor",
+    "darkgray",
+    "ghostwhite",
+    "lato",
+    "lightgray",
+    "mealstogo",
+    "monospace"
+  ]
 }
