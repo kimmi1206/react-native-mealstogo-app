@@ -1,6 +1,5 @@
-node_modules/
-.expo/
-dist/
+node_modules/**/*
+.expo/*
 npm-debug.*
 *.jks
 *.p8
@@ -12,3 +11,8 @@ web-build/
 
 # macOS
 .DS_Store
+
+*/node_modules/**/*
+firebase-debug.log
+ui-debug.log
+.runtimeconfig.json
