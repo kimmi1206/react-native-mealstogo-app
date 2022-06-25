@@ -1,12 +1,20 @@
-import camelize from "camelize";
-import { host, isMock } from "../../utils/env";
+import camelize from 'camelize';
+import { host, isMock } from '../../utils/env';
+import { mocks } from './mock';
 
-export const restaurantsRequest = (location) => {
-  return fetch(`${host}/placesNearby?location=${location}&mock=${isMock}`).then(
-    (res) => {
-      return res.json();
+export const restaurantsRequest = (location = '37.7749295,-122.4194155') => {
+  // return fetch(`${host}/placesNearby?location=${location}&mock=${isMock}`).then(
+  //   (res) => {
+  //     return res.json();
+  //   }
+  // );
+  return new Promise((resolve, reject) => {
+    const mock = mocks[location];
+    if (!mock) {
+      reject('not found');
     }
-  );
+    resolve(mock);
+  });
 };
 
 export const restaurantsTransform = ({ results = [] }) => {
@@ -15,7 +23,7 @@ export const restaurantsTransform = ({ results = [] }) => {
       ...restaurant,
       address: restaurant.vicinity,
       isOpenNow: restaurant.opening_hours && restaurant.opening_hours.open_now,
-      isClosedTemporarily: restaurant.business_status === "CLOSED_TEMPORARILY",
+      isClosedTemporarily: restaurant.business_status === 'CLOSED_TEMPORARILY',
     };
   });
 

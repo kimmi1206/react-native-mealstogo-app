@@ -1,8 +1,12 @@
-import { StatusBar, SafeAreaView } from "react-native";
-import styled from "styled-components/native";
+import { SafeAreaView, StatusBar } from 'react-native';
+import styled from 'styled-components/native';
 
-export const SafeArea = styled(SafeAreaView)`
+// SafeAreaView is Only for iOS, Statusbar spacing
+// ${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px`};
+export const SafeAreaContainer = styled(SafeAreaView)`
   flex: 1;
-  ${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px`};
-  background-color: ${(props) => props.theme.colors.bg.primary};
+  ${`margin-top: ${StatusBar.currentHeight || 0}px`};
+  align-items: flex-start;
+  justify-content: flex-start;
+  background-color: ${(props) => props.theme.colors.bg.tertiary};
 `;
