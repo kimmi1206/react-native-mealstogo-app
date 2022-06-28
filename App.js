@@ -10,7 +10,16 @@ import {
 import { useFonts as useLato, Lato_400Regular } from '@expo-google-fonts/lato';
 
 import { theme } from './src/infrastructure/theme';
+<<<<<<< HEAD
 import { Navigation } from './src/infrastructure/navigation';
+=======
+import { useFonts } from 'expo-font';
+import { Oswald_400Regular } from '@expo-google-fonts/oswald';
+import { Lato_400Regular } from '@expo-google-fonts/lato';
+import { Text } from 'react-native';
+import { SafeAreaContainer } from './src/components/utility/safe-area.component';
+import Ionicons from '@expo/vector-icons/Ionicons';
+>>>>>>> parent of 1bda789 (added seach functionality / meals-to-go app)
 
 import { AuthenticationContextProvider } from './src/services/authentication/authentication.context';
 
@@ -42,6 +51,7 @@ export default function App() {
   }
 
   return (
+<<<<<<< HEAD
     <>
       <ThemeProvider theme={theme}>
         <AuthenticationContextProvider>
@@ -50,5 +60,34 @@ export default function App() {
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>
+=======
+    <NavigationContainer>
+      <ThemeProvider theme={theme}>
+        <Tab.Navigator
+          screenOptions={({ route }) => {
+            let iconName;
+            if (route.name === ROUTE[route.name]) {
+              iconName = TAB_ICON[route.name];
+            }
+            return {
+              tabBarIcon: () =>
+                tabBarIconHandler({
+                  iconName,
+                  size: TAB_STYLE.Size,
+                  color: TAB_STYLE.Color.Icon.Active,
+                }),
+              tabBarActiveTintColor: TAB_STYLE.Color.Text.Active,
+              tabBarInactiveTintColor: TAB_STYLE.Color.Text.Inactive,
+            };
+          }}
+        >
+          <Tab.Screen name={ROUTE.Restaurants} component={RestaurantsScreen} />
+          <Tab.Screen name={ROUTE.Map} component={Map} />
+          <Tab.Screen name={ROUTE.Settings} component={Settings} />
+        </Tab.Navigator>
+        <ExpoStatusBar style="auto" />
+      </ThemeProvider>
+    </NavigationContainer>
+>>>>>>> parent of 1bda789 (added seach functionality / meals-to-go app)
   );
 }

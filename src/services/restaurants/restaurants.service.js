@@ -1,5 +1,11 @@
+<<<<<<< HEAD
 import { mocks, mockImages } from "./mock";
 import camelize from "camelize";
+=======
+import camelize from 'camelize';
+import { host, isMock } from '../../utils/env';
+import { mocks } from './mock';
+>>>>>>> parent of 1bda789 (added seach functionality / meals-to-go app)
 
 export const restaurantsRequest = (location) => {
   return new Promise((resolve, reject) => {
@@ -13,10 +19,13 @@ export const restaurantsRequest = (location) => {
 
 export const restaurantsTransform = ({ results = [] }) => {
   const mappedResults = results.map((restaurant) => {
+<<<<<<< HEAD
     restaurant.photos = restaurant.photos.map((p) => {
       return mockImages[Math.ceil(Math.random() * (mockImages.length - 1))];
     });
 
+=======
+>>>>>>> parent of 1bda789 (added seach functionality / meals-to-go app)
     return {
       ...restaurant,
       address: restaurant.vicinity,
