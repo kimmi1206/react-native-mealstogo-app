@@ -1,44 +1,59 @@
-import styled from "styled-components/native";
-import { Card } from "react-native-paper";
-
-export const Icon = styled.Image`
-  width: 15px;
-  height: 15px;
-`;
+import styled from 'styled-components/native';
+import { Card, Title, Paragraph } from 'react-native-paper';
+import { View } from 'react-native';
 
 export const RestaurantCard = styled(Card)`
-  background-color: ${(props) => props.theme.colors.bg.primary};
-  width: 95%;
-  align-self: center;
+  background-color: ${(props) => props.theme.colors.bg.quaternary};
+  margin-bottom: ${(props) => props.theme.space[3]};
 `;
 
 export const RestaurantCardCover = styled(Card.Cover)`
   padding: ${(props) => props.theme.space[3]};
-  background-color: ${(props) => props.theme.colors.bg.primary};
+  background-color: ${(props) => props.theme.colors.ui.secondary};
 `;
 
-export const Address = styled.Text`
+export const RestaurantCardActions = styled(Card.Actions)`
+  justify-content: center;
+  font-family: ${(props) => props.theme.fonts.monospace};
+`;
+
+export const RestaurantCardTitle = styled(Card.Title)`
+  font-family: ${(props) => props.theme.fonts.heading};
+  font-size: ${(props) => props.theme.fontSizes.body};
+`;
+
+export const StyledParagraph = styled(Paragraph)`
+  color: ${(props) => props.theme.colors.text.primary};
   font-family: ${(props) => props.theme.fonts.body};
-  font-size: ${(props) => props.theme.fontSizes.caption};
+  font-weight: ${(props) => props.theme.fontWeights.medium};
 `;
 
-export const Info = styled.View`
+export const StyledTitleOpen = styled(Title)`
+  color: ${(props) => props.theme.colors.text.success};
+  font-family: ${(props) => props.theme.fonts.body};
+  font-weight: ${(props) => props.theme.fontWeights.bold};
+`;
+
+export const StyledTitleClosed = styled(Title)`
+  color: ${(props) => props.theme.colors.text.disabled};
+  font-family: ${(props) => props.theme.fonts.body};
+  font-weight: ${(props) => props.theme.fontWeights.bold};
+`;
+
+export const StyledMessage = styled(Title)`
+  color: ${(props) => props.theme.colors.text.error};
+  font-family: ${(props) => props.theme.fonts.body};
+  font-weight: ${(props) => props.theme.fontWeights.bold};
+`;
+
+export const Info = styled(View)`
   padding: ${(props) => props.theme.space[3]};
 `;
 
-export const Rating = styled.View`
-  flex-direction: row;
-  padding-top: ${(props) => props.theme.space[2]};
-  padding-bottom: ${(props) => props.theme.space[2]};
-`;
-
-export const Section = styled.View`
+export const Rating = styled(View)`
   flex-direction: row;
   align-items: center;
-`;
-
-export const SectionEnd = styled.View`
-  flex: 1;
-  flex-direction: row;
-  justify-content: flex-end;
+  justify-content: flex-start;
+  padding-top: ${(props) => props.theme.space[2]};
+  padding-bottom: ${(props) => props.theme.space[2]};
 `;

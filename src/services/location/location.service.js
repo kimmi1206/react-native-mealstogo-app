@@ -1,23 +1,20 @@
-import camelize from "camelize";
-<<<<<<< HEAD
-
-import { locations } from "./location.mock";
+import camelize from 'camelize';
+import { locations } from './location.mock';
+import { host, isMock } from '../../utils/env';
 
 export const locationRequest = (searchTerm) => {
+  // return fetch(`${host}/geocode?city=${searchTerm}&mock=${isMock}`).then(
+  //   (res) => {
+  //     return res.json();
+  //   },
+  // );
   return new Promise((resolve, reject) => {
     const locationMock = locations[searchTerm];
     if (!locationMock) {
-      reject("not found");
-=======
-import { host, isMock } from "../../utils/env";
-
-export const locationRequest = (searchTerm) => {
-  return fetch(`${host}/geocode?city=${searchTerm}&mock=${isMock}`).then(
-    (res) => {
-      return res.json();
->>>>>>> parent of 1bda789 (added seach functionality / meals-to-go app)
+      reject('not found');
     }
-  );
+    resolve(locationMock);
+  });
 };
 
 export const locationTransform = (result) => {
