@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
-import { locationRequest, locationTransform } from './location.service';
+import { locationRequest, locationTransform } from "./location.service";
 
 export const LocationContext = React.createContext();
 
 export const LocationContextProvider = ({ children }) => {
-  const [keyword, setKeyword] = useState('San Francisco');
+  const [keyword, setKeyword] = useState("San Francisco");
   const [location, setLocation] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -23,7 +23,6 @@ export const LocationContextProvider = ({ children }) => {
     locationRequest(keyword.toLowerCase())
       .then(locationTransform)
       .then((result) => {
-        setError(null);
         setIsLoading(false);
         setLocation(result);
       })
