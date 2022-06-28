@@ -1,26 +1,27 @@
-import { StatusBar as ExpoStatusBar } from "expo-status-bar";
-import React from "react";
-import { ThemeProvider } from "styled-components/native";
-import * as firebase from "firebase";
+import { StatusBar as ExpoStatusBar } from 'expo-status-bar';
+import React from 'react';
+import { ThemeProvider } from 'styled-components/native';
+import * as firebase from 'firebase';
 
 import {
   useFonts as useOswald,
   Oswald_400Regular,
-} from "@expo-google-fonts/oswald";
-import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
+} from '@expo-google-fonts/oswald';
+import { useFonts as useLato, Lato_400Regular } from '@expo-google-fonts/lato';
 
-import { theme } from "./src/infrastructure/theme";
-import { Navigation } from "./src/infrastructure/navigation";
+import { theme } from './src/infrastructure/theme';
+import { Navigation } from './src/infrastructure/navigation';
 
-import { AuthenticationContextProvider } from "./src/services/authentication/authentication.context";
+import { AuthenticationContextProvider } from './src/services/authentication/authentication.context';
 
 const firebaseConfig = {
-  apiKey: "<fill in your own>",
-  authDomain: "<fill in your own>",
-  projectId: "<fill in your own>",
-  storageBucket: "<fill in your own>",
-  messagingSenderId: "<fill in your own>",
-  appId: "<fill in your own>",
+  apiKey: 'AIzaSyD6SoWEw71y1l6bDp0TyK8Xr71ymgHaaO0',
+  authDomain: 'react-router-test-app.firebaseapp.com',
+  databaseURL: 'https://react-router-test-app-default-rtdb.firebaseio.com',
+  projectId: 'react-router-test-app',
+  storageBucket: 'react-router-test-app.appspot.com',
+  messagingSenderId: '759566613011',
+  appId: '1:759566613011:web:9b5a9529a6aaaed7335de6',
 };
 
 if (!firebase.apps.length) {
