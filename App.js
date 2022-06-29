@@ -2,7 +2,11 @@ import { StatusBar as ExpoStatusBar } from 'expo-status-bar';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
 import { RestaurantsScreen } from './src/features/restaurants/screens/restaurants.screen';
+import { CameraScreen } from './src/features/camera/screens/camera.screen';
+import { PaymentsScreen } from './src/features/payments/screens/payments.screen';
+
 import { ThemeProvider } from 'styled-components/native';
 import { theme } from './src/infrastructure/theme';
 import { useFonts } from 'expo-font';
@@ -18,8 +22,8 @@ const Tab = createBottomTabNavigator();
 
 const TAB_ICON = {
   Restaurants: 'restaurant-outline',
-  Map: 'map-outline',
-  Settings: 'settings-outline',
+  Camera: 'camera-outline',
+  Payments: 'card-outline',
 };
 
 const TAB_STYLE = {
@@ -35,18 +39,18 @@ const TAB_STYLE = {
 
 const ROUTE = {
   Restaurants: 'Restaurants',
-  Map: 'Map',
-  Settings: 'Settings',
+  Camera: 'Camera',
+  Payments: 'Payments',
 };
 
-const Map = () => (
+const Camera = () => (
   <SafeAreaContainer>
-    <Text>Map</Text>
+    <Text>Camera</Text>
   </SafeAreaContainer>
 );
-const Settings = () => (
+const Payments = () => (
   <SafeAreaContainer>
-    <Text>Settings</Text>
+    <Text>Payments</Text>
   </SafeAreaContainer>
 );
 
@@ -91,8 +95,8 @@ export default function App() {
                 name={ROUTE.Restaurants}
                 component={RestaurantsScreen}
               />
-              <Tab.Screen name={ROUTE.Map} component={Map} />
-              <Tab.Screen name={ROUTE.Settings} component={Settings} />
+              <Tab.Screen name={ROUTE.Camera} component={CameraScreen} />
+              <Tab.Screen name={ROUTE.Payments} component={PaymentsScreen} />
             </Tab.Navigator>
           </NavigationContainer>
         </RestaurantsContextProvider>
