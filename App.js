@@ -5,15 +5,15 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { RestaurantsScreen } from './src/features/restaurants/screens/restaurants.screen';
 import { CameraScreen } from './src/features/camera/screens/camera.screen';
-import { PaymentsScreen } from './src/features/payments/screens/payments.screen';
+import { QrCodeScreen } from './src/features/qrcode/screens/qrcode.screen';
 
 import { ThemeProvider } from 'styled-components/native';
 import { theme } from './src/infrastructure/theme';
 import { useFonts } from 'expo-font';
 import { Oswald_400Regular } from '@expo-google-fonts/oswald';
 import { Lato_400Regular } from '@expo-google-fonts/lato';
-import { Text } from 'react-native';
-import { SafeAreaContainer } from './src/components/utility/safe-area.component';
+// import { Text } from 'react-native';
+// import { SafeAreaContainer } from './src/components/utility/safe-area.component';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { RestaurantsContextProvider } from './src/services/restaurants/restaurants.context';
 import { LocationContextProvider } from './src/services/location/location.context';
@@ -23,7 +23,7 @@ const Tab = createBottomTabNavigator();
 const TAB_ICON = {
   Restaurants: 'restaurant-outline',
   Camera: 'camera-outline',
-  Payments: 'card-outline',
+  QrCode: 'qr-code-outline',
 };
 
 const TAB_STYLE = {
@@ -40,19 +40,8 @@ const TAB_STYLE = {
 const ROUTE = {
   Restaurants: 'Restaurants',
   Camera: 'Camera',
-  Payments: 'Payments',
+  QrCode: 'QrCode',
 };
-
-const Camera = () => (
-  <SafeAreaContainer>
-    <Text>Camera</Text>
-  </SafeAreaContainer>
-);
-const Payments = () => (
-  <SafeAreaContainer>
-    <Text>Payments</Text>
-  </SafeAreaContainer>
-);
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -96,7 +85,7 @@ export default function App() {
                 component={RestaurantsScreen}
               />
               <Tab.Screen name={ROUTE.Camera} component={CameraScreen} />
-              <Tab.Screen name={ROUTE.Payments} component={PaymentsScreen} />
+              <Tab.Screen name={ROUTE.QrCode} component={QrCodeScreen} />
             </Tab.Navigator>
           </NavigationContainer>
         </RestaurantsContextProvider>

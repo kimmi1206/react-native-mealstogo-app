@@ -18,7 +18,7 @@ module.exports = {
         singleQuote: true,
         jsxSingleQuote: false,
         semi: true,
-        trailingComma: 'all',
+        trailingComma: 'es5',
       },
     ],
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
